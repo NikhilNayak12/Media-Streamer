@@ -1,0 +1,16 @@
+.layout-container {
+    min-height: 100vh;
+    background-color: #0f172a;
+}
+
+.layout-content {
+    display: flex;
+    gap: 0;
+}
+
+.layout-main {
+    flex: 1;
+    background-color: #0f172a;
+    padding: 20px;
+    overflow-y: auto;
+}
