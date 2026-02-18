@@ -76,3 +76,30 @@
 .error {
     color: #ef4444;
 }
+
+.pagination-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.pagination-btn {
+    background-color: #1e293b;
+    color: #ffffff;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination-page {
+    color: #cbd5e1;
+    font-size: 14px;
+}
