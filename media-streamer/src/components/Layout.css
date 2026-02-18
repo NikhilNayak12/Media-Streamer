@@ -1,6 +1,6 @@
 .layout-container {
     min-height: 100vh;
-    background-color: #0f172a;
+    background-color: #05070b;
 }
 
 .layout-content {
@@ -10,7 +10,7 @@
 
 .layout-main {
     flex: 1;
-    background-color: #0f172a;
+    background-color: #020203;
     padding: 20px;
     overflow-y: auto;
 }

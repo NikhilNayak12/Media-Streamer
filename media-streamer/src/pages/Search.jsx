@@ -13,33 +13,34 @@ function Search() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        if (query) {
-            fetchSearchResults();
-        } else {
+        if (!query) {
             setLoading(false);
+            return;
         }
-    }, [query]);
 
-    const fetchSearchResults = async () => {
-        try {
-            setLoading(true);
-            const API_KEY = import.meta.env.VITE_RAPID_API_KEY;
-            const response = await fetch(
-                `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${query}&key=${API_KEY}`
-            );
-            
-            if (!response.ok) {
-                throw new Error('Failed to fetch search results');
+        const fetchSearchResults = async () => {
+            try {
+                setLoading(true);
+                const API_KEY = import.meta.env.VITE_RAPID_API_KEY;
+                const response = await fetch(
+                    `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${query}&key=${API_KEY}`
+                );
+                
+                if (!response.ok) {
+                    throw new Error('Failed to fetch search results');
+                }
+
+                const data = await response.json();
+                setVideos(data.items || []);
+                setLoading(false);
+            } catch (err) {
+                setError(err.message);
+                setLoading(false);
             }
+        };
 
-            const data = await response.json();
-            setVideos(data.items || []);
-            setLoading(false);
-        } catch (err) {
-            setError(err.message);
-            setLoading(false);
-        }
-    };
+        fetchSearchResults();
+    }, [query]);
 
     if (loading) {
         return (
