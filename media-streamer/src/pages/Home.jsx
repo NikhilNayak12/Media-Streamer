@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import VideoCard from "../components/VideoCard";
 import Pagination from "../components/Pagination";
+import ShimmerCard from "../components/ShimmerCard";
 import "./Home.css";
 
 function Home() {
@@ -62,7 +63,11 @@ function Home() {
         return (
             <section className="home-container">
                 <h1 className="home-title">Trending Videos</h1>
-                <div className="loading">Loading videos...</div>
+                <div className="video-grid">
+                    {Array.from({ length: 12 }).map((_, index) => (
+                        <ShimmerCard key={`shimmer-${index}`} />
+                    ))}
+                </div>
             </section>
         );
     }
