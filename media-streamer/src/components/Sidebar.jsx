@@ -17,6 +17,11 @@ function Sidebar() {
                         </NavLink>
                     </li>
                     <li>
+                        <NavLink to="/history" className="sidebar-link">
+                            Watch History
+                        </NavLink>
+                    </li>
+                    <li>
                         <NavLink to="/upload" className="sidebar-link">
                             Upload
                         </NavLink>

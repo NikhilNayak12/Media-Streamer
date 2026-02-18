@@ -19,7 +19,22 @@ function Watch() {
                 );
                 const data = await response.json();
                 if (data.items && data.items.length > 0) {
-                    setVideoDetails(data.items[0]);
+					const video = data.items[0];
+					setVideoDetails(video);
+
+					const historyItem = {
+						id,
+						title: video.snippet?.title || "Untitled",
+						thumbnail: video.snippet?.thumbnails?.medium?.url || "",
+					};
+					const existing = JSON.parse(
+						localStorage.getItem("watchHistory") || "[]"
+					);
+					const updated = [
+						historyItem,
+						...existing.filter((item) => item.id !== id),
+					].slice(0, 50);
+					localStorage.setItem("watchHistory", JSON.stringify(updated));
                 }
                 setLoading(false);
             } catch (err) {
